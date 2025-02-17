@@ -1,20 +1,41 @@
 # List your SystemVerilog source files
-VLOG_LECT01_FILES = lect01.sv lect01_tb.sv
+VLOG_LECT01_FILES = lect01_tb.sv
 
 # Specify the top-level module for simulation
 TOP_LECT01_MODULE = lect01_tb
-
+VSIM_CMD = vsim -c $(TOP_LECT01_MODULE) 
+VSIM_CMD += -do "run.do"
 .PHONY: compile clean
 
 # Main target: using the top-level module as the target name
-lect01_tb: lect01 
-	@echo "Starting simulation for $(TOP_LECT01_MODULE)..."
-	vsim -c $(TOP_LECT01_MODULE) -do "run.do"
+lect01a_tb: lect01a 
+	@echo "Starting simulation for $(TOP_LECT01_MODULE) structural coding style..."
+	$(VSIM_CMD)
+
+# Main target: using the top-level module as the target name
+lect01b_tb: lect01b 
+	@echo "Starting simulation for $(TOP_LECT01_MODULE) concurrent coding style..."
+	$(VSIM_CMD)
+
+# Main target: sequential RTL coding
+lect01c_tb: lect01c 
+	@echo "Starting simulation for $(TOP_LECT01_MODULE) sequential coding style..."
+	$(VSIM_CMD)
 
 # Compile the source files
-lect01:
+lect01a:
 	@echo "Compiling with vlog..."
-	vlog $(VLOG_LECT01_FILES)
+	vlog lect01a.sv $(VLOG_LECT01_FILES)
+
+# Compile the source files
+lect01b:
+	@echo "Compiling with vlog..."
+	vlog lect01b.sv $(VLOG_LECT01_FILES)
+
+# Compile the source files
+lect01c:
+	@echo "Compiling with vlog..."
+	vlog lect01c.sv $(VLOG_LECT01_FILES)
 
 # Clean up generated files (adjust as needed)
 clean:

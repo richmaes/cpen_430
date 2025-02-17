@@ -7,36 +7,40 @@ module mux(
     input  logic S,
     output logic Z
 );
+    initial 
+        begin
+            $display("%0t, INFO: Mux using abstraction level style",$time);
+        end
 
     // Internal nets for intermediate signals
-    logic s_bar;
-    logic a_and;
-    logic b_and;
+    logic SN;
+    logic ASN;
+    logic SB;
 
     // Instantiate the inverter to generate the complement of S
-    INV inv_inst (
+    INV U1   (
         .A(S),
-        .F(s_bar)
+        .F(SN)
     );
 
-    // Instantiate the first AND gate: a_and = A & ~S
-    AND2 and2_a_inst (
+    // Instantiate the first AND gate: ASN = A & ~S
+    AND2 U2 (
         .A(A),
-        .B(s_bar),
-        .F(a_and)
+        .B(SN),
+        .F(ASN)
     );
 
-    // Instantiate the second AND gate: b_and = B & S
+    // Instantiate the second AND gate: SB = B & S
     AND2 and2_b_inst (
-        .A(B),
-        .B(S),
-        .F(b_and)
+        .A(S),
+        .B(B),
+        .F(SB)
     );
 
-    // Instantiate the OR gate to combine the two paths: Z = a_and | b_and
+    // Instantiate the OR gate to combine the two paths: Z = ASN | SB
     OR2 or2_inst (
-        .A(a_and),
-        .B(b_and),
+        .A(ASN),
+        .B(SB),
         .F(Z)
     );
 
