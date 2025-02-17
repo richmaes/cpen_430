@@ -8,34 +8,25 @@ VSIM_CMD += -do "run.do"
 .PHONY: compile clean
 
 # Main target: using the top-level module as the target name
-lect01a_tb: lect01a 
+lect01a_tb: 
+	@echo "Compiling with vlog..."
+	vlog lect01a.sv $(VLOG_LECT01_FILES)
 	@echo "Starting simulation for $(TOP_LECT01_MODULE) structural coding style..."
 	$(VSIM_CMD)
 
 # Main target: using the top-level module as the target name
-lect01b_tb: lect01b 
+lect01b_tb:
+	@echo "Compiling with vlog..."
+	vlog lect01b.sv $(VLOG_LECT01_FILES) 
 	@echo "Starting simulation for $(TOP_LECT01_MODULE) concurrent coding style..."
 	$(VSIM_CMD)
 
 # Main target: sequential RTL coding
-lect01c_tb: lect01c 
+lect01c_tb:
+	@echo "Compiling with vlog..."
+	vlog lect01c.sv $(VLOG_LECT01_FILES) 
 	@echo "Starting simulation for $(TOP_LECT01_MODULE) sequential coding style..."
 	$(VSIM_CMD)
-
-# Compile the source files
-lect01a:
-	@echo "Compiling with vlog..."
-	vlog lect01a.sv $(VLOG_LECT01_FILES)
-
-# Compile the source files
-lect01b:
-	@echo "Compiling with vlog..."
-	vlog lect01b.sv $(VLOG_LECT01_FILES)
-
-# Compile the source files
-lect01c:
-	@echo "Compiling with vlog..."
-	vlog lect01c.sv $(VLOG_LECT01_FILES)
 
 # Clean up generated files (adjust as needed)
 clean:
