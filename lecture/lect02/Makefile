@@ -13,5 +13,5 @@ include ../Makefile.include
 
 # Main target: using the top-level module as the target name
 mux_tb: TEST_MSG = "Starting simulation for $(TOP_MODULE)" 
-mux_tb: compile optimize simulate
+mux_tb: simulate
 

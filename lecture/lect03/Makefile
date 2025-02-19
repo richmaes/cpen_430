@@ -18,4 +18,4 @@ include ../Makefile.include
 
 # Main target: using the top-level module as the target name
 shiftcomp_tb: TEST_MSG = "Starting simulation for $(TOP_MODULE)"
-shiftcomp_tb: compile optimize simulate
+shiftcomp_tb: simulate
