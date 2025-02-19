@@ -1,17 +1,17 @@
+# List your SystemVerilog source files
+TB_FILES = mux_tb.sv
+RTL_FILES = mux_rtl.sv
 # Specify the top-level module for simulation
-TB_MODULE = mux_tb
-VSIM_CMD = vsim -c $(TB_MODULE) 
-VSIM_CMD += -do "run.do"
-.PHONY: compile clean
+TOP_MODULE = mux_tb
+TOP_OPT_MODULE = $(TOP_MODULE)_opt
+
+all: mux_tb
+
+include ../Makefile.include
+
+.PHONY: mux_tb clean 
 
 # Main target: using the top-level module as the target name
-mux_tb: 
-	@echo "Compiling with vlog..."
-	vlog mux_rtl.sv $(TB_MODULE).sv
-	@echo "Starting simulation for $(TB_MODULE) structural coding style..."
-	$(VSIM_CMD)
+mux_tb: TEST_MSG = "Starting simulation for $(TOP_MODULE)" 
+mux_tb: compile optimize simulate
 
-# Clean up generated files (adjust as needed)
-clean:
-	@echo "Cleaning up simulation files..."
-	rm -rf work transcript vsim.wlf

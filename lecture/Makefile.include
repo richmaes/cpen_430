@@ -1,0 +1,38 @@
+GUI ?= 0
+
+VLOG_CMD = vlog $(RTL_FILES) $(TB_FILES)
+VLOG_CMD += -64
+
+VOPT_CMD = vopt 
+VOPT_CMD += work.$(TOP_MODULE)
+VOPT_CMD += -64 
+#VOPT_CMD += +access=rw
+#VOPT_CMD += +debug
+VOPT_CMD += +acc
+VOPT_CMD += -o $(TOP_OPT_MODULE)
+
+VSIM_CMD = vsim
+VSIM_CMD += -64 
+ifeq ($(GUI),0)
+  VSIM_CMD += -c
+endif
+VSIM_CMD += -nowlfcompress
+VSIM_CMD += -nowlfdeleteonquit
+VSIM_CMD += -debugdb -wlf $(TOP_MODULE).wlf
+VSIM_CMD += $(TOP_OPT_MODULE) 
+VSIM_CMD += -do "../run.do"
+
+# Clean up generated files (adjust as needed)
+clean:
+	@echo "Cleaning up simulation files..."
+	rm -rf work transcript *.wlf etch*
+
+compile:
+	@echo $(TEST_MSG)
+	$(VLOG_CMD)
+
+optimize:
+	$(VOPT_CMD)
+
+simulate:
+	$(VSIM_CMD)
