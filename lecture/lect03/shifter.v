@@ -1,7 +1,7 @@
 module compare (
-  input  logic [7:0] A,
-  input  logic [7:0] B,
-  output logic     EQ
+  input  wire [7:0] A,
+  input  wire [7:0] B,
+  output reg        EQ
 );
 
     // Notes:
@@ -13,7 +13,7 @@ module compare (
 
 
   // Combinational logic to compare A and B
-  always_comb begin
+  always begin
     `ifdef LOGICAL_EQUALITY
     if (A == B)
     `else

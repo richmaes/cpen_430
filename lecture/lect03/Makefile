@@ -1,14 +1,14 @@
 # Specify the top-level module for simulation
-TB_FILES = shiftcomp_tb.sv
+TB_FILES = shiftcomp_tb.v
 
 TOP_MODULE = shiftcomp_tb
 TOP_OPT_MODULE = $(TOP_MODULE)_opt
 
-RTL_FILES = shifter.sv 
-RTL_FILES += compare.sv 
-RTL_FILES += shiftcomp.sv
-RTL_FILES += iclk.sv
-RTL_FILES += irst.sv
+RTL_FILES = shifter.v 
+RTL_FILES += compare.v 
+RTL_FILES += shiftcomp.v
+RTL_FILES += iclk.v
+RTL_FILES += irst.v
 
 all: shiftcomp_tb
 

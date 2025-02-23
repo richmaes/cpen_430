@@ -1,14 +1,14 @@
 module shiftcomp (
-  input  logic         clk,
-  input  logic         rst,
-  input  logic         load,
-  input  logic [7:0]   init,
-  input  logic [7:0]   test,
-  output logic         limit
+  input  wire         clk,
+  input  wire         rst,
+  input  wire         load,
+  input  wire [7:0]   init,
+  input  wire [7:0]   test,
+  output wire         limit
 );
 
   // Internal net to connect the shifter and comparator.
-  logic [7:0] q_net;
+  wire [7:0] q_net;
 
   // Instantiate the comparator module.
   compare COMP_1 (

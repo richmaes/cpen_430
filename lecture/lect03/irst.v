@@ -5,8 +5,14 @@ module irst #(
     input clk,
     output rst
     );
-    bit [7:0] rstdly;  // Type bit resolves X's and Z's to zero.  Good for simulation initialization.
-    logic rst_d;
+    reg [7:0] rstdly;  // Type bit resolves X's and Z's to zero.  Good for simulation initialization.
+    reg rst_d;
+	initial
+		begin
+			rstdly = 8'h00;
+			rst_d = 1'b1;
+		end
+
     always @ (posedge clk)
         begin
             rstdly <= (RST_DLY === rstdly) ? RST_DLY : rstdly + 8'h01;

@@ -1,17 +1,17 @@
 module shifter (
-  input  logic         clk,
-  input  logic         rst,
-  input  logic         load,
-  input  logic [7:0]   data,
-  output logic [7:0]   Q,
-  output logic [7:0]   Qb
+  input  wire         clk,
+  input  wire         rst,
+  input  wire         load,
+  input  wire [7:0]   data,
+  output wire [7:0]   Q,
+  output wire [7:0]   Qb
 );
 
   // Internal register, declared with the same index order as the VHDL version
-  logic [7:0] Qreg;
+  reg [7:0] Qreg;
 
   // Sequential block with asynchronous reset
-  always_ff @(posedge clk or posedge rst) begin
+  always @(posedge clk or posedge rst) begin
     if (rst)
       Qreg <= 8'b00000000; // Asynchronous reset
     else if (load)

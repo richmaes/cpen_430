@@ -1,6 +1,6 @@
 module shiftcomp_tb ();
-    logic clk;
-    logic rst;
+    wire clk;
+    wire rst;
 
     iclk #(5000,5000) u_iclk (.clk(clk));
     irst #(5) u_irst(.clk(clk),.rst(rst));
