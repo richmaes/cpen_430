@@ -1,12 +1,12 @@
 module iclk #(
-    parameter int tH,
-              int tL
+    parameter tH = 5,
+              tL = 5
     )  
     (
     output clk
     );
 
-    bit clk_w;
+    reg clk_w;
     // Initialize the clock
     initial begin
       clk_w = 0;
