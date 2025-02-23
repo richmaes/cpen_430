@@ -1,6 +1,5 @@
 # Specify the top-level module for simulation
 TB_FILES = dff_tb.v counter_tb.v
-TB_FILES += iclk.v irst.v
 
 TOP_MODULE = dff_tb
 TOP_OPT_MODULE = $(TOP_MODULE)_opt

@@ -1,6 +1,11 @@
 GUI ?= 0
 
-VLOG_CMD = vlog $(RTL_FILES) $(TB_FILES)
+CWD := $(shell pwd)
+COMMON_DIR := $(CWD)/../common
+COMMON_FILES = $(COMMON_DIR)/irst.v
+COMMON_FILES = $(COMMON_DIR)/iclk.v
+
+VLOG_CMD = vlog $(RTL_FILES) $(TB_FILES) $(COMMON_FILES)
 VLOG_CMD += -64
 
 VOPT_CMD = vopt 

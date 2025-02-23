@@ -7,8 +7,6 @@ TOP_OPT_MODULE = $(TOP_MODULE)_opt
 RTL_FILES = shifter.v 
 RTL_FILES += compare.v 
 RTL_FILES += shiftcomp.v
-RTL_FILES += iclk.v
-RTL_FILES += irst.v
 
 all: shiftcomp_tb
 
