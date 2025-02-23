@@ -1,9 +1,16 @@
+// Filename lect01_tb.v
+// Date: 2/20/25
+// Author: Rich Maes
+// Description:
+// A testbench for multiple mux designs using an case based internal model 
+// for comparison and a error counting.  
+
 module lect01_tb();
 
 
-logic A, B, S, Z;
-logic  Zt;  // The simulation prediction logic variable
-logic [31:0] num_errors;
+wire A, B, S, Z;
+wire  Zt;  // The simulation prediction logic variable
+reg [31:0] num_errors;
 
 initial 
     begin

@@ -2,10 +2,10 @@
 // Converted from VHDL to SystemVerilog
 
 module mux(
-    input  logic A,
-    input  logic B,
-    input  logic S,
-    output logic Z
+    input  wire A,
+    input  wire B,
+    input  wire S,
+    output wire Z
 );
     initial 
         begin
@@ -13,9 +13,9 @@ module mux(
         end
 
     // Internal nets for intermediate signals
-    logic SN;
-    logic ASN;
-    logic SB;
+    wire SN;
+    wire ASN;
+    wire SB;
 
     // Instantiate the inverter to generate the complement of S
     INV U1   (
@@ -49,8 +49,8 @@ endmodule
 
 // Inverter module: Implements F = ~A
 module INV(
-    input  logic A,
-    output logic F
+    input  wire A,
+    output wire F
 );
     assign F = ~A;
 endmodule
@@ -58,9 +58,9 @@ endmodule
 
 // 2-input AND gate module: Implements F = A & B
 module AND2(
-    input  logic A,
-    input  logic B,
-    output logic F
+    input  wire A,
+    input  wire B,
+    output wire F
 );
     assign F = A & B;
 endmodule
@@ -68,9 +68,9 @@ endmodule
 
 // 2-input OR gate module: Implements F = A | B
 module OR2(
-    input  logic A,
-    input  logic B,
-    output logic F
+    input  wire A,
+    input  wire B,
+    output wire F
 );
     assign F = A | B;
 endmodule
