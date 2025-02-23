@@ -2,7 +2,7 @@
 // Date: 2/20/25
 // Author: Rich Maes
 // Description: A more advanced form of the DFF with flexible sync/async reset,
-//              parameterizable width.
+//              parameterizable width with a default width of 1.
 
 `include "project_config.vh"           // All instances of the dff.v will load this config file and use the
                                        // the setting inside to control the sync/async feature
@@ -12,7 +12,7 @@
 `endif
 
 module dff
-    #(parameter WIDTH)                 // A common coding practice is to CAPITALIZE parameters
+    #(parameter WIDTH=1)               // A common coding practice is to CAPITALIZE parameters
     (
         input                  clk,    // By default clk, rst and d are data type wire
         input                  rst,

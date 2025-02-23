@@ -8,14 +8,17 @@
 module lect01_tb();
 
 
-wire A, B, S, Z;
-wire  Zt;  // The simulation prediction logic variable
+reg A, B, S;
+wire Z;
+reg  Zt;  // The simulation prediction logic variable
 reg [31:0] num_errors;
+reg [31:0] i;
+
 
 initial 
     begin
         num_errors = 0;
-        for (int i = 0; i < 8; i = i + 1)
+        for (i = 0; i < 8; i = i + 1)
             begin
                 B = i[0];
                 A = i[1];

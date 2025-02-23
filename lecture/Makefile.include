@@ -7,7 +7,7 @@ VOPT_CMD = vopt
 VOPT_CMD += work.$(TOP_MODULE)
 VOPT_CMD += -64 
 #VOPT_CMD += +access=rw
-#VOPT_CMD += +debug
+VOPT_CMD += -debugdb
 VOPT_CMD += +acc
 VOPT_CMD += -o $(TOP_OPT_MODULE)
 
